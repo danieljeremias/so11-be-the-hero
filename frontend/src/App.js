@@ -1,24 +1,12 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello OmniStack</p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Routes from './routes';
+
+import './global.css';
+
+export default function App() {
+  // Retorna um array com duas posições
+  // Primeira, o valor da variável
+  // Segunda, uma função para alterar o valor da variável
+  return <Routes />;
 }
-
-export default App;
