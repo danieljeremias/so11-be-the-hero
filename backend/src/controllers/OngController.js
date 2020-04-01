@@ -1,5 +1,4 @@
-// Utilizada para gerar um texto aleatório
-const crypto = require('crypto');
+const generateUniqueId = require('../utils/generateUniqueId');
 
 // Importa a coneção com o banco de dados
 const connection = require('../database/connection');
@@ -16,7 +15,7 @@ module.exports = {
     const { name, email, whatsapp, city, uf } = req.body;
 
     // Gerando um ID hexadecimal de 4 posições
-    const id = crypto.randomBytes(4).toString('HEX');
+    const id = generateUniqueId();
 
     // Faz o insert da ONG na base de dados
     await connection('ongs').insert({

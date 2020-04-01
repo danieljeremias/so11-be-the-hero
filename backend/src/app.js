@@ -7,6 +7,8 @@ const cors = require('cors');
 // Importa as rotas da aplicação (utilizado ./ para identificar um arquivo e não um pacote)
 const routes = require('./routes');
 
+const { errors } = require('celebrate');
+
 // Cria a aplicação
 const app = express();
 
@@ -19,8 +21,11 @@ app.use(express.json());
 // Essa instrução deve estar abaixo da instrução app.use(express.json()) - MUITO IMPORTANTE
 app.use(routes);
 
-// Define a porta em que a aplicação estará executando
-app.listen(3333);
+// Configura os erros do celebrate para não retornarem 500 Internal Server Error
+// Retorna o erro como um objeto JSON com Bad Request, message e source
+app.use(errors());
+
+module.exports = app;
 
 // Configuração do banco de dados com Query Builder KNEX
 // Instala o Query Builder

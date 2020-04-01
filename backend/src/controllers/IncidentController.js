@@ -24,22 +24,6 @@ module.exports = {
     return res.json(incidents);
   },
 
-  async listByOng(req, res) {
-    const ong_id = req.headers.authorization;
-
-    if (!ong_id) {
-      return res.status(404).json({
-        error: 'Operation not permited! ONG is not logged.'
-      });
-    }
-
-    const incidents = await connection('incidents')
-      .select('*')
-      .where('ong_id', ong_id);
-
-    return res.json(incidents);
-  },
-
   async create(req, res) {
     const ong_id = req.headers.authorization;
 
